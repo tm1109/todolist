@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  user-select: none;
+}
+
+h1 {
+  background-color: paleturquoise;
+}
+
+label:hover {
+  color: red;
+}
+
+input:checked + .done-todo {
+  text-decoration: line-through;
+  color: lightgray;
+}
