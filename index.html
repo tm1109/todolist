@@ -3,154 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ポートフォリオサイト</title>
-    <!-- <link
+    <title>Todoリスト</title>
+    <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
-    /> -->
-
+    />
     <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://kit.fontawesome.com/55f37c9520.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
   <body>
-    <header>
-      <nav class="tab-navigation">
-        <ul class="tab-navigation__inner">
-          <li class="tab-navigation__item">
-            <a class="tab-navigation__link" href="#profile">Profile</a>
-          </li>
-          <li class="tab-navigation__item">
-            <a class="tab-navigation__link" href="#works">Works</a>
-          </li>
-          <li class="tab-navigation__item">
-            <a class="tab-navigation__link" href="#skill">Skill</a>
+    <div class="container">
+      <h1>ToDoリスト</h1>
+      <div id="app">
+        <input
+          type="text"
+          class="mt-5"
+          placeholder="新規タスク"
+          @keyup.enter="addToDo"
+          v-model="task"
+        />
+        <ul class="list-unstyled my-4">
+          <li v-for="todo in todos">
+            <label @keyup.delete="deleteTodo">
+              <input type="checkbox" v-model="todo.done" />
+              <span class="done-todo">{{todo.text}}</span>
+            </label>
           </li>
         </ul>
-      </nav>
-    </header>
-    <div class="container">
-      <section class="profile" id="profile">
-        <h1 class="level1-heading">
-          <span class="level1-heading__inner">Profile</span>
-        </h1>
-        <div class="horizontal-table">
-          <table class="horizontal-table__inner">
-            <tbody class="horizontal-table__body">
-              <tr class="horizontal-table__row">
-                <th class="horizontal-table__header">名前</th>
-                <td class="horizontal-table__text">____ ____</td>
-              </tr>
-              <tr class="horizontal-table__row">
-                <th class="horizontal-table__header">生年月日</th>
-                <td class="horizontal-table__text">____年__月__日</td>
-              </tr>
-              <tr class="horizontal-table__row">
-                <th class="horizontal-table__header">居住地</th>
-                <td class="horizontal-table__text">_______</td>
-              </tr>
-              <tr class="horizontal-table__row">
-                <th class="horizontal-table__header">資格</th>
-                <td class="horizontal-table__text">基本情報技術者</td>
-              </tr>
-              <tr class="horizontal-table__row">
-                <th class="horizontal-table__header">使用エディタ</th>
-                <td class="horizontal-table__text">Visual Studio Code</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <section class="works" id="works">
-        <h1 class="level1-heading">
-          <span class="level1-heading__inner">Works</span>
-        </h1>
-        <div class="cards cards--col3">
-          <a
-            class="cards__item card card--link"
-            href="https://tm1109.github.io/portfolio/"
-          >
-            <figure class="card__img-wrapper">
-              <img src="portfolio.png" alt="" class="card__img" />
-            </figure>
-            <div class="card__body">
-              <h3 class="card__title">ポートフォリオサイト</h3>
-              <p class="card__text">
-                HTML/CSS JavaScriptを使って自己紹介サイトを作りました
-              </p>
-            </div>
-          </a>
-          <a
-            class="cards__item card card--link"
-            href="https://tm1109.github.io/todolist/"
-          >
-            <figure class="card__img-wrapper">
-              <img src="todolist.png" alt="" class="card__img" />
-            </figure>
-            <div class="card__body">
-              <h3 class="card__title">Todoリスト</h3>
-              <p class="card__text">Vue.jsを使ってTodoリストを作りました</p>
-            </div>
-          </a>
-          <a
-            class="cards__item card card--link"
-            href="https://tanase-assets-portfolio.herokuapp.com/"
-          >
-            <figure class="card__img-wrapper">
-              <img src="stockprice.png" alt="" class="card__img" />
-            </figure>
-            <div class="card__body">
-              <h3 class="card__title">資産ポートフォリオ</h3>
-              <p class="card__text">
-                PythonとFlaskを使って株価を取得して保有株の割合を円グラフで表示しました
-              </p>
-            </div>
-          </a>
-        </div>
-      </section>
-      <section class="skill" id="skill">
-        <h1 class="level1-heading">
-          <span class="level1-heading__inner">Skill</span>
-        </h1>
-        <div class="vertical-table">
-          <table class="vertical-table__inner">
-            <thead class="vertical-table__headers">
-              <tr class="vertical-table__header-row">
-                <th class="vertical-table__header">技術</th>
-                <th class="vertical-table__header">スキルレベル</th>
-              </tr>
-            </thead>
-            <tbody class="vertical-table__body">
-              <tr class="vertical-table__body-row">
-                <td class="vertical-table__text">HTML/CSS</td>
-                <td class="vertical-table__text">★★★☆☆</td>
-              </tr>
-              <tr class="vertical-table__body-row">
-                <td class="vertical-table__text">JavaScript</td>
-                <td class="vertical-table__text">★★☆☆☆</td>
-              </tr>
-              <tr class="vertical-table__body-row">
-                <td class="vertical-table__text">VueJS</td>
-                <td class="vertical-table__text">★★☆☆☆</td>
-              </tr>
-              <tr class="vertical-table__body-row">
-                <td class="vertical-table__text">Python</td>
-                <td class="vertical-table__text">★★☆☆☆</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
-    <footer>
-      <div class="return-top">
-        <a href="#profile"><i class="fas fa-arrow-up fa-3x"></i></a>
+        <p>{{ doneTodos }} / {{ allTodos }}件処理</p>
+        <button class="btn btn-danger" @click="deleteTodo">削除</button>
       </div>
-    </footer>
-    <script src="script.js"></script>
+      <script src="script.js"></script>
+    </div>
   </body>
 </html>
